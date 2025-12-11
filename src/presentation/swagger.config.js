@@ -139,6 +139,10 @@ const swaggerDefinition = {
             type: 'string',
             example: 'Electronics'
           },
+          brand: {
+            type: 'string',
+            example: 'Apple'
+          },
           imageUrl: {
             type: 'string',
             example: 'http://example.com/image.jpg'
@@ -167,6 +171,10 @@ const swaggerDefinition = {
           category: {
             type: 'string',
             example: 'Electronics'
+          },
+          brand: {
+            type: 'string',
+            example: 'Apple'
           },
           imageUrl: {
             type: 'string',
