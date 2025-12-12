@@ -1,8 +1,8 @@
 # Taller Modulo 3 - Backend
-Autores:
+Grupo 6:
 - Diego Alejandro Quiñones Rudon
 - Mario Rosales Vargas
 
-Documentacion de endpoints:
+Documentacion y prueba de endpoints:
 
 http://localhost:8000/api-docs
