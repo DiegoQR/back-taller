@@ -11,7 +11,7 @@ class ProductMongoRepository extends ProductRepository {
     async getById(id) {
         const product = await ProductModel.findById(id);
         if (!product) return null;
-        return new Product(product._id.toString(), product.name, product.description, product.price, product.stock, product.category, product.imageUrl);
+        return new Product(product._id.toString(), product.name, product.description, product.price, product.stock, product.category, product.brand, product.imageUrl);
     }
 
     async create(productEntity) {
@@ -21,10 +21,11 @@ class ProductMongoRepository extends ProductRepository {
             price: productEntity.price,
             stock: productEntity.stock,
             category: productEntity.category,
+            brand: productEntity.brand,
             imageUrl: productEntity.imageUrl
         });
         const savedProduct = await newProduct.save();
-        return new Product(savedProduct._id.toString(), savedProduct.name, savedProduct.description, savedProduct.price, savedProduct.stock, savedProduct.category, savedProduct.imageUrl);
+        return new Product(savedProduct._id.toString(), savedProduct.name, savedProduct.description, savedProduct.price, savedProduct.stock, savedProduct.category, savedProduct.brand, savedProduct.imageUrl);
     }
 
     async update(id, productEntity) {
@@ -34,11 +35,12 @@ class ProductMongoRepository extends ProductRepository {
             price: productEntity.price,
             stock: productEntity.stock,
             category: productEntity.category,
+            brand: productEntity.brand,
             imageUrl: productEntity.imageUrl
         }, { new: true });
 
         if (!updatedProduct) return null;
-        return new Product(updatedProduct._id.toString(), updatedProduct.name, updatedProduct.description, updatedProduct.price, updatedProduct.stock, updatedProduct.category, updatedProduct.imageUrl);
+        return new Product(updatedProduct._id.toString(), updatedProduct.name, updatedProduct.description, updatedProduct.price, updatedProduct.stock, updatedProduct.category, updatedProduct.brand, updatedProduct.imageUrl);
     }
 
     async delete(id) {

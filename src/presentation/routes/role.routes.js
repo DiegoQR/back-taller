@@ -3,6 +3,8 @@ const RoleController = require('../controller/role.controller');
 const RoleService = require('../../application/use-cases/role.service');
 const RoleMongoRepository = require('../../infrastructure/repositories/database/mongo/role.mongo.repository');
 const asyncHandler = require('../utils/async.handler');
+const authenticateToken = require('../middlewares/auth.middleware');
+const isAdmin = require('../middlewares/admin.middleware');
 
 const roleRepository = new RoleMongoRepository();
 const roleService = new RoleService(roleRepository);
@@ -76,8 +78,12 @@ router.get('/:id', asyncHandler(roleController.getById));
  *         description: Bad request
  *       409:
  *         description: Role with this name already exists
+ *       401:
+ *         description: No token provided, authorization denied
+ *       403:
+ *         description: Access denied. Administrator role required.
  */
-router.post('/', asyncHandler(roleController.create));
+router.post('/', [authenticateToken, isAdmin], asyncHandler(roleController.create));
 /**
  * @swagger
  * /roles/{id}:
@@ -106,8 +112,12 @@ router.post('/', asyncHandler(roleController.create));
  *               $ref: '#/components/schemas/Role'
  *       404:
  *         description: Role not found
+ *       401:
+ *         description: No token provided, authorization denied
+ *       403:
+ *         description: Access denied. Administrator role required.
  */
-router.put('/:id', asyncHandler(roleController.update));
+router.put('/:id', [authenticateToken, isAdmin], asyncHandler(roleController.update));
 /**
  * @swagger
  * /roles/{id}:
@@ -126,7 +136,11 @@ router.put('/:id', asyncHandler(roleController.update));
  *         description: No content
  *       404:
  *         description: User not found
+ *       401:
+ *         description: No token provided, authorization denied
+ *       403:
+ *         description: Access denied. Administrator role required.
  */
-router.delete('/:id', asyncHandler(roleController.delete));
+router.delete('/:id', [authenticateToken, isAdmin], asyncHandler(roleController.delete));
 
 module.exports = router;
