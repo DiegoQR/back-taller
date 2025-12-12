@@ -181,6 +181,44 @@ const swaggerDefinition = {
             example: 'http://example.com/image.jpg'
           }
         }
+      },
+      Cupon: {
+        type: 'object',
+        properties: {
+          id: {
+            type: 'string',
+            example: '60c72b2f9b1e8a001f8e4cad'
+          },
+          description: {
+            type: 'string',
+            example: 'Cupon de descuento'
+          },
+          price: {
+            type: 'number',
+            example: 10
+          },
+          category: {
+            type: 'string',
+            example: 'Electronics'
+          }
+        }
+      },
+      CuponInput: {
+        type: 'object',
+        properties: {
+          description: {
+            type: 'string',
+            example: 'Cupon de descuento'
+          },
+          price: {
+            type: 'number',
+            example: 10
+          },
+          category: {
+            type: 'string',
+            example: 'Electronics'
+          }
+        }
       }
     }
   },
