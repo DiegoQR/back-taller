@@ -25,6 +25,14 @@ const swaggerDefinition = {
     {
       name: 'Products',
       description: 'Operations related to products',
+    },
+    {
+      name: 'Cupons',
+      description: 'Operations related to cupons',
+    },
+    {
+      name: 'Orders',
+      description: 'Operations related to orders',
     }
   ],
   servers: [
@@ -181,12 +189,150 @@ const swaggerDefinition = {
             example: 'http://example.com/image.jpg'
           }
         }
+      },
+      Cupon: {
+        type: 'object',
+        properties: {
+          id: {
+            type: 'string',
+            example: '60c72b2f9b1e8a001f8e4cad'
+          },
+          description: {
+            type: 'string',
+            example: 'Cupon de descuento'
+          },
+          price: {
+            type: 'number',
+            example: 10
+          },
+          category: {
+            type: 'string',
+            example: 'Electronics'
+          }
+        }
+      },
+      CuponInput: {
+        type: 'object',
+        properties: {
+          description: {
+            type: 'string',
+            example: 'Cupon de descuento'
+          },
+          price: {
+            type: 'number',
+            example: 10
+          },
+          category: {
+            type: 'string',
+            example: 'Electronics'
+          }
+        }
+      },
+      Order: {
+        type: 'object',
+        properties: {
+          id: {
+            type: 'string',
+            example: '60c72b2f9b1e8a001f8e4cae'
+          },
+          products: {
+            type: 'array',
+            items: {
+              type: 'object',
+              properties: {
+                productId: {
+                  type: 'string',
+                  example: '60c72b2f9b1e8a001f8e4cad'
+                }
+              }
+            }
+          },
+          description: {
+            type: 'string',
+            example: 'Order description'
+          },
+          quantity: {
+            type: 'integer',
+            example: 2
+          },
+          discount: {
+            type: 'number',
+            example: 5
+          },
+          totalPrice: {
+            type: 'number',
+            example: 1794.98
+          }
+        }
+      },
+      OrderInput: {
+        type: 'object',
+        properties: {
+          products: {
+            type: 'array',
+            items: {
+              type: 'object',
+              properties: {
+                productId: {
+                  type: 'string',
+                  example: '60c72b2f9b1e8a001f8e4cad'
+                }
+              }
+            }
+          },
+          description: {
+            type: 'string',
+            example: 'Order description'
+          },
+          quantity: {
+            type: 'integer',
+            example: 2
+          },
+          discount: {
+            type: 'number',
+            example: 5
+          },
+          totalPrice: {
+            type: 'number',
+            example: 1794.98
+          }
+        }
+      },
+      OrderInput: {
+        type: 'object',
+        properties: {
+          products: {
+            type: 'array',
+            items: {
+              type: 'object',
+              properties: {
+                productId: {
+                  type: 'string',
+                  example: '60c72b2f9b1e8a001f8e4cad'
+                }
+              }
+            }
+          },
+          description: {
+            type: 'string',
+            example: 'Order description'
+          },
+          quantity: {
+            type: 'integer',
+            example: 2
+          },
+          discount: {
+            type: 'number',
+            example: 5
+          },
+          totalPrice: {
+            type: 'number',
+            example: 1794.98
+          }
+        }
       }
     }
-  },
-  security: [{
-    bearerAuth: []
-  }]
+  }
 };
 
 const options = {
