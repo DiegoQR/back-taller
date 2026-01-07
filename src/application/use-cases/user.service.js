@@ -1,5 +1,5 @@
 const User = require('../../domain/entities/user.entity');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const { ConflictError, NotFoundError } = require('../../domain/errors');
 
 class UserService {
